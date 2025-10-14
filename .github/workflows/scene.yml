@@ -20,7 +20,9 @@ jobs:
       - name: Check
         run: |
           VIOLATION=0
-          EXPECTED_USERNAME="${{ github.actor }}"
+          AUTHOR=$(git log -1 --pretty=format:'%an' -- "$FILE")
+          echo "File: $FILE (last changed by: $AUTHOR)"
+          EXPECTED_USERNAME=$(echo "$AUTHOR" | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
           while IFS= read -r FILE; do
             if [[ "$FILE" == Assets/Scenes/*.unity ]]; then
               FILENAME=$(basename "$FILE")
