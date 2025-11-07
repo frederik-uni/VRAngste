@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
  * Outside the model use the given methods.
  * To watch for changes use val <variable> by viewModel.<variable>.collectAsState()
  */
-class MainModel() : ViewModel() {
+class ControlModel() : ViewModel() {
     var _thunderVolume = MutableStateFlow(1.0f)
     val thunderVolume: MutableStateFlow<Float> = _thunderVolume
     var _lightningBrightness = MutableStateFlow(1.0f)
