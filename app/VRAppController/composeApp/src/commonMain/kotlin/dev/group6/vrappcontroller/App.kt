@@ -46,11 +46,11 @@ fun App() {
 
     var selected by remember { mutableIntStateOf(0) }
     AppTheme {
-        Surface(
-            modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
-        ) {
+        Surface {
 
-            Scaffold { contentPadding ->
+            Scaffold(
+                modifier = Modifier.windowInsetsPadding(WindowInsets.systemBars)
+            ) { contentPadding ->
                 Row {
                     NavigationRail(
                         modifier = Modifier.padding(contentPadding)
@@ -89,7 +89,7 @@ fun App() {
                                     ),
                                     onClick = {}
                                 ) {
-                                    Text(modifier = Modifier.padding(16.dp, 8.dp), text = "NOT STOP")
+                                    Text(modifier = Modifier.padding(16.dp, 8.dp), text = "STOP")
                                 }
                             }
                         }
