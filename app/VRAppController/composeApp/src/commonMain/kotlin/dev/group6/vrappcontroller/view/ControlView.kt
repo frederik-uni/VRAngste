@@ -43,10 +43,7 @@ fun ControlView(
     val wind by viewModel.wind.collectAsState()
     val clouds by viewModel.clouds.collectAsState()
 
-    val minThunderInterval by viewModel.minThunderInterval.collectAsState()
-    val maxThunderInterval by viewModel.maxThunderInterval.collectAsState()
-    val minLightningInterval by viewModel.minLightningInterval.collectAsState()
-    val maxLightningInterval by viewModel.maxLightningInterval.collectAsState()
+    val lightningInterval by viewModel.lightningInterval.collectAsState()
 
     Column(
         modifier = Modifier.fillMaxHeight().fillMaxWidth()
@@ -73,7 +70,7 @@ fun ControlView(
                     value = lightningDistance,
                     onValueChange = viewModel::setLightningDistance,
                 )
-                Text("${(lightningDistance * 100).roundToInt()}%")
+                Text("${(lightningDistance * 100).roundToInt()}m")
             }
 
         }
@@ -98,27 +95,13 @@ fun ControlView(
             }
         }
         Category("Interval") {
-            SubCategory("Intervall Donner") {
-                RangeSlider(
-                    value = minThunderInterval.toFloat()..maxThunderInterval.toFloat(),
-                    onValueChange = { rangeSliderState ->
-                        viewModel.setMinThunderInterval(rangeSliderState.start.roundToInt())
-                        viewModel.setMaxThunderInterval(rangeSliderState.endInclusive.roundToInt())
-                    },
-                    valueRange = 0f..100f,
-                )
-                Text("From $minThunderInterval to $maxThunderInterval per minute")
-            }
             SubCategory("Intervall Blitz") {
-                RangeSlider(
-                    value = minLightningInterval.toFloat()..maxLightningInterval.toFloat(),
-                    onValueChange = { rangeSliderState ->
-                        viewModel.setMinLightningInterval(rangeSliderState.start.roundToInt())
-                        viewModel.setMaxLightningInterval(rangeSliderState.endInclusive.roundToInt())
-                    },
+                Slider(
+                    value = lightningInterval.toFloat(),
+                    onValueChange = {viewModel.setLightningInterval(it.roundToInt())},
                     valueRange = 0f..100f,
                 )
-                Text("From $minLightningInterval to $maxLightningInterval per minute")
+                Text("Blitzschläge alle ${lightningInterval}s")
             }
         }
     }

@@ -24,14 +24,8 @@ class ControlModel() : ViewModel() {
     var _clouds = MutableStateFlow(0)
     val clouds: MutableStateFlow<Int> = _clouds
 
-    var _minThunderInterval = MutableStateFlow(10)
-    val minThunderInterval: MutableStateFlow<Int> = _minThunderInterval
-    var _maxThunderInterval = MutableStateFlow(100)
-    val maxThunderInterval: MutableStateFlow<Int> = _maxThunderInterval
-    var _minLightningInterval = MutableStateFlow(10)
-    val minLightningInterval: MutableStateFlow<Int> = _minLightningInterval
-    var _maxLightningInterval = MutableStateFlow(100)
-    val maxLightningInterval: MutableStateFlow<Int> = _maxLightningInterval
+    var _lightningInterval = MutableStateFlow(10)
+    val lightningInterval: MutableStateFlow<Int> = _lightningInterval
 
     init {
         _thunderVolume.value = 1.0f
@@ -42,32 +36,29 @@ class ControlModel() : ViewModel() {
     fun setThunderVolume(value: Float) {
         _thunderVolume.value = value
     }
+
     fun setLightningBrightness(value: Float) {
         _lightningBrightness.value = value
     }
+
     fun setLightningDistance(value: Float) {
         _lightningDistance.value = value
     }
+
     fun setRain(value: Int) {
         _rain.value = value
     }
+
     fun setWind(value: Int) {
         _wind.value = value
     }
+
     fun setClouds(value: Int) {
         _clouds.value = value
     }
-    fun setMinThunderInterval(value: Int) {
-        _minThunderInterval.value = value
-    }
-    fun setMaxThunderInterval(value: Int) {
-        _maxThunderInterval.value = value
-    }
-    fun setMinLightningInterval(value: Int) {
-        _minLightningInterval.value = value
-    }
-    fun setMaxLightningInterval(value: Int) {
-        _maxLightningInterval.value = value
+
+    fun setLightningInterval(value: Int) {
+        _lightningInterval.value = value
     }
 
 }
