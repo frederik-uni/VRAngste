@@ -30,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import dev.group6.vrappcontroller.model.ControlModel
 import dev.group6.vrappcontroller.model.DataModel
 import dev.group6.vrappcontroller.model.StreamModel
@@ -89,7 +90,13 @@ fun App() {
                                     ),
                                     onClick = {}
                                 ) {
-                                    Text(modifier = Modifier.padding(16.dp, 8.dp), text = "STOP")
+                                    Text(
+                                        modifier = Modifier.padding(16.dp, 8.dp),
+                                        text = "STOP",
+                                        style = if (getPlatform().name == "Desktop")
+                                            MaterialTheme.typography.bodyLarge.copy(fontSize = 24.sp)
+                                        else MaterialTheme.typography.bodyLarge
+                                    )
                                 }
                             }
                         }
